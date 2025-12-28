@@ -1,8 +1,6 @@
-import { useEffect } from "react"
-import getProducts from "../api/fetchapi"
 const Cart = () => {
-useEffect(() => {
-    const getProduct = fetch (getProducts)
-})
+return(
+    <>This is the cart page</>
+)
 }
 export default Cart;
