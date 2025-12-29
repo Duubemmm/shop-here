@@ -1,6 +1,9 @@
+import { FiShoppingCart } from "react-icons/fi";
+
+
 const Cart = () => {
 return(
-    <>This is the cart page</>
+    <FiShoppingCart/>
 )
 }
 export default Cart;

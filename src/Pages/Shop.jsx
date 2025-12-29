@@ -1,6 +1,5 @@
 import { getProducts } from "../api/fetchapi";
 import { useState, useEffect } from "react"
-import Error from "./Error.jsx"
 
 const Shop = () => {
     const [product, setProduct] = useState([])
@@ -10,11 +9,11 @@ const Shop = () => {
     useEffect(() => {
         const fetchProducts = async () => {
                 setIsLoading(true);
+                setError(false)
                 const productList = await getProducts(); 
+                console.log(productList)
                 setProduct(productList);
-                setIsLoading(false);
-                setError(true);
-                setIsLoading(false);
+                setIsLoading(false)
             
         };
         
@@ -22,7 +21,7 @@ const Shop = () => {
     }, []);
 
     if (isLoading) return <p className="text-center py-20 text-xl">Loading products...</p>;
-    if (error) return <Error />;
+    if (error) return <p className="text-red-600"> Error</p>;
 
     return (
         <section className="py-16 px-4 bg-gray-50 min-h-screen">
