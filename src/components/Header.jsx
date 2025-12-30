@@ -1,79 +1,115 @@
-import { useState } from "react";
 import { Link } from "react-router";
+import { useState } from "react";
+import CartCount from "../utils/CartCount";
+import { FaStore, FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
-  const NavMenu = [
-    { name: "Home", path: "/", id: 1 },
-    { name: "Shop", path: "/shop", id: 2 },
-    { name: "Cart", path: "/cart", id: 3 },
-  ];
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
-    <header className="bg-white shadow-md py-4 px-4 md:px-8">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        <div className="text-xl font-bold">ShopHere</div>
+    <nav className="bg-white shadow-lg sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 text-xl md:text-2xl font-bold text-green-600 hover:text-green-700 transition-colors"
+            onClick={closeMenu}
+          >
+            <FaStore className="text-xl md:text-2xl" />
+            <span>ShopHere</span>
+          </Link>
 
-        <nav className="hidden md:flex space-x-6">
-          {NavMenu.map((menu) => (
-            <Link
-              key={menu.id}
-              to={menu.path}
-              className="text-gray-700 hover:text-blue-600 transition-colors font-medium"
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            <Link 
+              to="/" 
+              className="text-gray-700 hover:text-green-600 font-medium transition-colors"
             >
-              {menu.name}
+              Home
             </Link>
-          ))}
-        </nav>
-
-        <button
-          className="md:hidden text-2xl text-gray-700 focus:outline-none"
-          onClick={toggleMenu}
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-        >
-          {menuOpen ? "✕" : "☰"}
-        </button>
-
-        {/* Mobile Menu Overlay */}
-        {menuOpen && (
-          <div className="fixed inset-0 z-50">
+            <Link 
+              to="/shop" 
+              className="text-gray-700 hover:text-green-600 font-medium transition-colors"
+            >
+              Shop
+            </Link>
             
-            {/* Menu Panel */}
-            <div className="absolute right-0 top-0 h-full w-64 bg-white shadow-xl animate-slideIn">
-              <div className="p-6">
-                <div className="flex justify-between items-center mb-8">
-                  <h3 className="text-lg font-bold">Menu</h3>
-                  <button
-                    onClick={toggleMenu}
-                    className="text-2xl text-gray-500 hover:text-gray-700"
-                  >
-                    ✕
-                  </button>
-                </div>
-                
-                <nav className="flex flex-col space-y-4">
-                  {NavMenu.map((menu) => (
-                    <Link
-                      key={menu.id}
-                      to={menu.path}
-                      className="py-3 px-4 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors font-medium"
-                      onClick={toggleMenu}
-                    >
-                      {menu.name}
-                    </Link>
-                  ))}
-                </nav>
-              </div>
+            {/* Cart Icon with Count */}
+            <Link 
+              to="/cart"
+              className="relative p-2 hover:bg-gray-100 rounded-full transition-colors flex items-center gap-2"
+            >
+              <span className="text-gray-700 hover:text-green-600 font-medium">Cart</span>
+              <CartCount />
+            </Link>
+          </div>
+
+          {/* Mobile Menu Button & Cart */}
+          <div className="flex md:hidden items-center gap-4">
+            {/* Mobile Cart */}
+            <Link 
+              to="/cart"
+              className="relative p-2 hover:bg-gray-100 rounded-full transition-colors"
+              onClick={closeMenu}
+            >
+              <CartCount />
+            </Link>
+
+            {/* Hamburger Menu Button */}
+            <button
+              onClick={toggleMenu}
+              className="p-2 text-gray-700 hover:text-green-600 hover:bg-gray-100 rounded-lg transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMenuOpen ? (
+                <FaTimes className="text-2xl" />
+              ) : (
+                <FaBars className="text-2xl" />
+              )}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMenuOpen && (
+          <div className="md:hidden py-4 border-t">
+            <div className="flex flex-col space-y-4">
+              <Link 
+                to="/" 
+                className="text-gray-700 hover:text-green-600 font-medium transition-colors px-4 py-2 hover:bg-gray-50 rounded-lg"
+                onClick={closeMenu}
+              >
+                Home
+              </Link>
+              <Link 
+                to="/shop" 
+                className="text-gray-700 hover:text-green-600 font-medium transition-colors px-4 py-2 hover:bg-gray-50 rounded-lg"
+                onClick={closeMenu}
+              >
+                Shop
+              </Link>
+              <Link 
+                to="/cart"
+                className="text-gray-700 hover:text-green-600 font-medium transition-colors px-4 py-2 hover:bg-gray-50 rounded-lg flex items-center justify-between"
+                onClick={closeMenu}
+              >
+                <span>Cart</span>
+                <CartCount />
+              </Link>
             </div>
           </div>
         )}
       </div>
-    </header>
+    </nav>
   );
 };
 

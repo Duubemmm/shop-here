@@ -1,4 +1,4 @@
-import { useShop } from "../context/ShopContext";
+import { useShop } from "../hooks/useShop";
 import { FaShoppingCart } from "react-icons/fa";
 
 const CartCount = () => {
@@ -10,11 +10,10 @@ const CartCount = () => {
       <FaShoppingCart className="text-2xl text-gray-700" />
       {count > 0 && (
         <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
-          {count > 99 ? "99+" : count}
+          {count > 99 ? '99+' : count}
         </span>
       )}
     </div>
   );
 };
-
 export default CartCount;

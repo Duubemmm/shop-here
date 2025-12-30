@@ -39,7 +39,7 @@ const Shop = () => {
           <h1 className="text-4xl font-bold text-gray-800 mb-2">
             Shop All Products
           </h1>
-          <p className="text-gray-600">{product.length} products available</p>
+          {/* <p className="text-gray-600">{product.length} products available</p> */}
         </div>
 
         {/* Product Grid */}
