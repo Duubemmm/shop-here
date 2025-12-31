@@ -36,10 +36,10 @@ const DisplayProduct = () => {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-800 mb-3">
+          <h2 className="text-4xl font-bold text-green-900 mb-3">
             Shop amazing and quality products
           </h2>
-          <p className="text-gray-600">Discover amazing deals on quality items</p>
+          <p className="text-green-900">Discover amazing deals on quality items</p>
         </div>
 
         {/* Product Display Card */}

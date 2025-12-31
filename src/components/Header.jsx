@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { useState } from "react";
 import CartCount from "../utils/CartCount";
-import { FaStore, FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,16 +15,14 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <nav className="bg-gray-50 shadow-lg sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center gap-2 text-xl md:text-2xl font-bold text-green-600 hover:text-green-700 transition-colors"
+            className="flex items-center gap-2 text-xl md:text-2xl font-bold text-green-900"
             onClick={closeMenu}
           >
-            <FaStore className="text-xl md:text-2xl" />
             <span>ShopHere</span>
           </Link>
 
@@ -32,30 +30,28 @@ const Header = () => {
           <div className="hidden md:flex items-center gap-8">
             <Link 
               to="/" 
-              className="text-gray-700 hover:text-green-600 font-medium transition-colors"
+              className="text-green-700 hover:text-green-900 font-medium transition-colors"
             >
               Home
             </Link>
             <Link 
               to="/shop" 
-              className="text-gray-700 hover:text-green-600 font-medium transition-colors"
+              className="text-green-700 hover:text-green-900 font-medium transition-colors"
             >
               Shop
             </Link>
             
-            {/* Cart Icon with Count */}
             <Link 
               to="/cart"
               className="relative p-2 hover:bg-gray-100 rounded-full transition-colors flex items-center gap-2"
             >
-              <span className="text-gray-700 hover:text-green-600 font-medium">Cart</span>
+              <span className="text-green-700 hover:text-green-900 font-medium">Cart</span>
               <CartCount />
             </Link>
           </div>
 
-          {/* Mobile Menu Button & Cart */}
+          {/* Mobile Navigation */}
           <div className="flex md:hidden items-center gap-4">
-            {/* Mobile Cart */}
             <Link 
               to="/cart"
               className="relative p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -64,10 +60,9 @@ const Header = () => {
               <CartCount />
             </Link>
 
-            {/* Hamburger Menu Button */}
             <button
               onClick={toggleMenu}
-              className="p-2 text-gray-700 hover:text-green-600 hover:bg-gray-100 rounded-lg transition-colors"
+              className="p-2 text-gray-700 hover:text-green-900 hover:bg-gray-100 rounded-lg transition-colors"
               aria-label="Toggle menu"
             >
               {isMenuOpen ? (
@@ -79,7 +74,6 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t">
             <div className="flex flex-col space-y-4">

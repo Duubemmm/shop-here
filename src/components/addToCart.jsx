@@ -1,5 +1,5 @@
 import { useShop } from "../context/ShopContext";
-import { FaShoppingCart, FaCheck, FaPlus, FaMinus } from "react-icons/fa";
+import { FaShoppingCart, FaCheck } from "react-icons/fa";
 
 const AddToCart = ({ product, variant = "default" }) => {
   const { addToCart, removeFromCart, isInCart, cart } = useShop();
@@ -15,15 +15,14 @@ const AddToCart = ({ product, variant = "default" }) => {
     removeFromCart(product.id);
   };
 
-  // Default variant - Simple add/remove toggle
   if (variant === "default") {
     return (
       <button
         onClick={inCart ? handleRemove : handleAdd}
         className={`${
           inCart
-            ? 'bg-green-500 hover:bg-green-600'
-            : 'bg-blue-500 hover:bg-blue-600'
+            ? 'bg-green-900 hover:bg-green-700'
+            : 'bg-blue-900 hover:bg-blue-700'
         } text-white px-4 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2`}
       >
         {inCart ? (
@@ -41,15 +40,14 @@ const AddToCart = ({ product, variant = "default" }) => {
     );
   }
 
-  // Icon variant - Just an icon button
   if (variant === "icon") {
     return (
       <button
         onClick={inCart ? handleRemove : handleAdd}
         className={`${
           inCart
-            ? 'bg-green-500 hover:bg-green-600'
-            : 'bg-blue-500 hover:bg-blue-600'
+            ? 'bg-green-900 hover:bg-green-700'
+            : 'bg-blue-900 hover:bg-blue-700'
         } text-white p-3 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl`}
         title={inCart ? "Remove from cart" : "Add to cart"}
       >
@@ -58,13 +56,12 @@ const AddToCart = ({ product, variant = "default" }) => {
     );
   }
 
-  // Quantity variant - Shows quantity controls if in cart
   if (variant === "quantity") {
     if (!inCart) {
       return (
         <button
           onClick={handleAdd}
-          className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2"
+          className="bg-blue-900 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-all duration-200 flex items-center gap-2"
         >
           <FaShoppingCart />
           <span>Add to Cart</span>
@@ -84,8 +81,6 @@ const AddToCart = ({ product, variant = "default" }) => {
       </div>
     );
   }
-
-  return null;
 };
 
 export default AddToCart;

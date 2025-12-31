@@ -1,33 +1,22 @@
 import { useShop } from "../hooks/useShop";
 import { FaShoppingCart, FaCheck } from "react-icons/fa";
+import Loading from "./Loading";
 
 const Shop = () => {
   const { product, loading, error, addToCart, isInCart } = useShop();
 
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-green-500 mx-auto mb-4"></div>
-          <p className="text-xl text-gray-600">Loading products...</p>
-        </div>
-      </div>
-    );
+            return <Loading message="Loading amazing products..." />;
   }
 
   if (error) {
     return (
-      <div className="flex items-center justify-center min-h-screen">
-        <div className="text-center">
-          <p className="text-red-600 text-xl mb-4">{error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600"
-          >
-            Retry
-          </button>
-        </div>
-      </div>
+   <Error 
+                message="Failed to Load Products"
+                description={error}
+                onRetry={() => window.location.reload()}
+                showShopButton={false}
+            />
     );
   }
 
@@ -36,10 +25,10 @@ const Shop = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-12">
-          <h1 className="text-4xl font-bold text-gray-800 mb-2">
-            Shop All Products
+          <h1 className="text-4xl font-bold text-green-900 mb-2">
+            Shop for your quality products
           </h1>
-          {/* <p className="text-gray-600">{product.length} products available</p> */}
+          <p className="text-gray-600">{product.length} products available</p>
         </div>
 
         {/* Product Grid */}

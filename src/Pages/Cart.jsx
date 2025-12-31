@@ -59,7 +59,6 @@ const Cart = () => {
   return (
     <div className="min-h-screen bg-gray-50 py-16 px-4">
       <div className="max-w-6xl mx-auto">
-        {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-4xl font-bold text-gray-800 mb-2">Shopping Cart</h1>
@@ -191,28 +190,6 @@ const Cart = () => {
               <button className="w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-lg font-bold text-lg transition-colors shadow-lg hover:shadow-xl">
                 Proceed to Checkout
               </button>
-
-              {/* Trust Badges */}
-              <div className="mt-6 pt-6 border-t space-y-3">
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center shrink-0">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <span>Secure Payment</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center shrink-0">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <span>Free Returns within 30 days</span>
-                </div>
-                <div className="flex items-center gap-3 text-sm text-gray-600">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center shrink-0">
-                    <span className="text-green-600 font-bold">✓</span>
-                  </div>
-                  <span>24/7 Customer Support</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
